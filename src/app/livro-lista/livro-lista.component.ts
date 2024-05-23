@@ -15,15 +15,13 @@ import { CommonModule } from '@angular/common';
 export class LivroListaComponent {
   public editoras: Array<Editora> = [];
   public livros: Array<Livro> = [];
-  private servEditora: ControleEditoraService;
-  private servLivro: ControleLivrosService;
   
-  constructor() { 
-    this.servEditora = new ControleEditoraService();
-    this.servLivro = new ControleLivrosService();
-  }
+  constructor( 
+    private servEditora: ControleEditoraService, 
+    private servLivro: ControleLivrosService
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.editoras = this.servEditora.getEditoras();
     this.livros = this.servLivro.obterLivros();
   }
